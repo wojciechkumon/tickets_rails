@@ -27,5 +27,6 @@
 
 
 <%= render "tickets/new_ticket_form", ticket: Ticket.new(:event_id => @event.id) %>
+<%= render "tickets/list", tickets: @event.tickets %>
 
 <%= link_to 'Back', events_path %>
