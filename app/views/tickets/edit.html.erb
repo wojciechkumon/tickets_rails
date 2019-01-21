@@ -1,6 +1,7 @@
 <h1>Editing Ticket</h1>
 
-<%= render 'new_ticket_form', ticket: @ticket %>
+<%= render 'new_ticket_form', ticket: @ticket, show_event_id: true %>
+<%= render 'events/list', events: Event.all %>
 
 <%= link_to 'Show', @ticket %> |
 <%= link_to 'Back', tickets_path %>

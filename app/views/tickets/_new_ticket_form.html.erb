@@ -11,7 +11,14 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :event_id %>
+  <% if show_event_id %>
+    <div class="field">
+      <%= form.label 'Event id' %>
+      <%= form.text_field :event_id %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :event_id %>
+  <% end %>
 
   <div class="field">
     <%= form.label :name %>
