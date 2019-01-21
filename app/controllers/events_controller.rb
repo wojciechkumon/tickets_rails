@@ -16,8 +16,7 @@ class EventsController < ApplicationController
     event_params = params.require(:event).permit(:artist, :description, :price_low, :price_high, :event_date)
     @event = Event.new(event_params)
     if @event.save
-      flash[:komunikat] = 'Event został poprawnie stworzony.'
-      redirect_to "/events/#{@event.id}"
+      redirect_to "/events/#{@event.id}", notice: 'Event was successfully created.'
     else
       render 'new'
     end
