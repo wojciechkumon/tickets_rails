@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'events/index'
+  get 'events' => 'events#index'
   get 'events/new'
-  get 'events/create'
-  get 'events/show'
+  post 'events' => 'events#create'
+  get 'events/:id' => 'events#show'
   resources :tickets
   root to: 'tickets#index'
 end
