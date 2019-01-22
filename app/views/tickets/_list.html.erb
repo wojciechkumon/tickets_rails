@@ -3,6 +3,9 @@
     <h3 class="text-center text-uppercase text-secondary mb-0">Tickets</h3>
 
     <div class="row">
+      <% if show_new_ticket_btn %>
+        <a href="<%= new_ticket_path %>" class="btn btn-primary btn-xl ml-auto">New ticket</a>
+      <% end %>
       <table class="table table-hover events-table">
         <thead>
         <tr>
@@ -25,7 +28,7 @@
             <td><a href="/tickets/<%= ticket.id %>"><%= ticket.address %></a></td>
             <td><a href="/tickets/<%= ticket.id %>"><%= ticket.phone %></a></td>
             <% if ticket.user == current_user %>
-              <td><%= link_to 'Edit', edit_ticket_path(ticket), :class => 'btn btn-primary ml-auto' %></td>
+              <td><%= link_to 'Edit', edit_ticket_path(ticket), :class => 'btn btn-primary ml-auto mr-2' %></td>
               <td><%= link_to 'Remove', ticket, method: :delete, data: {confirm: 'Are you sure?'},
                               :class => 'btn btn-primary ml-auto' %></td>
             <% end %>
