@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new(:email_address => current_user.email)
   end
 
   # GET /tickets/1/edit
