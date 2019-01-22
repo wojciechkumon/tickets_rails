@@ -1,32 +1,52 @@
-<p>
-  <strong>Artist:</strong>
-  <%= @event.artist %>
-</p>
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center text-uppercase text-secondary mb-0"><%= @event.artist %></h2>
+    <hr class="star-dark mb-5">
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <div class="mb-3">
+          <span class="question">Who?</span>
+          <div>
+            <strong><%= @event.artist %></strong>
+          </div>
+        </div>
+        <div class="mb-3">
+          <span class="question">Where?</span>
+          <div>
+            <strong><%= @event.city %></strong>
+          </div>
+        </div>
+        <div>
+          <span class="question">What?</span>
+          <div>
+            <strong><%= @event.description %></strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="mb-3">
+          <span class="question">How much?</span>
+          <div>
+            <strong><%= number_with_precision(@event.price_low, :precision => 2) %>
+              -  <%= number_with_precision(@event.price_high, :precision => 2) %></strong>
+          </div>
+        </div>
+        <div>
+          <span class="question">When?</span>
+          <div>
+            <strong><%= @event.event_date %></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>City:</strong>
-  <%= @event.city %>
-</p>
 
-<p>
-  <strong>Lowest price:</strong>
-  <%= @event.price_low %>
-</p>
 
-<p>
-  <strong>Highest price:</strong>
-  <%= @event.price_high %>
-</p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.event_date %>
-</p>
+
 
 <div style="height: 70vh;" id="events-map"></div>
 <script>
