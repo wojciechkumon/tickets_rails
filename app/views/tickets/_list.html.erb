@@ -1,35 +1,38 @@
-<h1>Tickets</h1>
+<section id="contact">
+  <div class="container">
+    <h3 class="text-center text-uppercase text-secondary mb-0">Tickets</h3>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Seat id seq</th>
-    <th>Address</th>
-    <th>Price</th>
-    <th>Email address</th>
-    <th>Phone</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% tickets.each do |ticket| %>
-    <tr>
-      <td><%= ticket.name %></td>
-      <td><%= ticket.seat_id_seq %></td>
-      <td><%= ticket.address %></td>
-      <td><%= ticket.price %></td>
-      <td><%= ticket.email_address %></td>
-      <td><%= ticket.phone %></td>
-      <td><%= link_to 'Show', ticket %></td>
-
-      <% if ticket.user == current_user %>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-      <% end %>
-
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <div class="row">
+      <table class="table table-hover events-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Seat id</th>
+          <th>Price</th>
+          <th>Email address</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th colspan="2"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% tickets.each do |ticket| %>
+          <tr>
+            <td><a href="/tickets/<%= ticket.id %>"><%= ticket.name %></a></td>
+            <td><a href="/tickets/<%= ticket.id %>"><%= ticket.seat_id_seq %></a></td>
+            <td><a href="/tickets/<%= ticket.id %>"><%= ticket.price %></a></td>
+            <td><a href="/tickets/<%= ticket.id %>"><%= ticket.email_address %></a></td>
+            <td><a href="/tickets/<%= ticket.id %>"><%= ticket.address %></a></td>
+            <td><a href="/tickets/<%= ticket.id %>"><%= ticket.phone %></a></td>
+            <% if ticket.user == current_user %>
+              <td><%= link_to 'Edit', edit_ticket_path(ticket), :class => 'btn btn-primary ml-auto' %></td>
+              <td><%= link_to 'Remove', ticket, method: :delete, data: {confirm: 'Are you sure?'},
+                              :class => 'btn btn-primary ml-auto' %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
