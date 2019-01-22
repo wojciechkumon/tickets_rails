@@ -28,6 +28,25 @@
   <%= @event.event_date %>
 </p>
 
+<div style="height: 70vh;" id="events-map"></div>
+<script>
+    var eventMap = L.map('events-map');
+    var mapboxToken = 'pk.eyJ1Ijoid29qdGFzNjI2IiwiYSI6ImNqcjg2MXhlczAyd20zeXF4cGxmenp1bGEifQ.Sxyfr4VMLK9Eq5R6M2deHw';
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxToken, {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: mapboxToken
+    }).addTo(eventMap);
+    var latLongArray = <%= @latLong %>;
+    if (latLongArray) {
+        eventMap.setView(latLongArray, 7);
+        L.marker(latLongArray).addTo(eventMap);
+    } else {
+        var cracowCenter = [50.062201, 19.938157];
+        eventMap.setView(cracowCenter, 15);
+    }
+</script>
 
 <%= render "tickets/new_ticket_form", ticket: Ticket.new(:event_id => @event.id), show_event_id: false %>
 <%= render "tickets/list", tickets: @event.tickets %>

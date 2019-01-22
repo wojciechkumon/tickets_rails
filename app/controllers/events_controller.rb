@@ -3,6 +3,13 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @latLong = Geocoder.search(@event.city).first
+    if @latLong
+      @latLong = @latLong.coordinates
+    end
+    if @latLong.nil?
+      @latLong = 0;
+    end
   end
 
   def index
