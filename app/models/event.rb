@@ -10,13 +10,13 @@ class Event < ApplicationRecord
   validate :event_date_not_from_past, :max_price_lower_than_min
 
   def event_date_not_from_past
-    if event_date < Date.today
+    if event_date.present? && event_date < Date.today
       errors.add(:event_date, 'cannot be in past')
     end
   end
 
   def max_price_lower_than_min
-    if price_high < price_low
+    if price_high.present? && price_low.present? && price_high < price_low
       errors.add(:price_high, 'cannot lower then low')
     end
   end
