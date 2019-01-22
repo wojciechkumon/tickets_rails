@@ -1,5 +1,22 @@
-<h1>All events</h1> <ul>
+<h1>All events</h1>
+
+
+<div class="list-group">
   <% @events.each {|event| %>
-  <li><%=  link_to event.artist, "/events/#{event.id}"  %></li>
-  <%  } %> </ul>
+    <%= link_to event.artist, "/events/#{event.id}", :class => 'list-group-item list-group-item-action' %>
+  <% } %>
+
+  <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+</div>
+
+<ul>
+  <% @events.each {|event| %>
+    <li><%= link_to event.artist, "/events/#{event.id}" %></li>
+  <% } %>
+</ul>
+
 <%= link_to 'New event', new_event_path %>
