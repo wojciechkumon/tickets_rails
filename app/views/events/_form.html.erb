@@ -1,47 +1,53 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<section>
+  <div class="container">
+    <h2 class="text-center text-uppercase text-secondary mb-3">New event</h2>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3 col-md-12">
+        <%= form_with(model: event, local: true) do |form| %>
+          <% if event.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+              <ul class="mb-0">
+                <% event.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-      <ul>
-      <% event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <div class="form-group">
+            <%= form.label :artist %>
+            <%= form.text_field :artist, :class => 'form-control', :placeholder => 'Artist' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, :class => 'form-control', :placeholder => 'Enter description' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :city %>
+            <%= form.text_field :city, :class => 'form-control', :placeholder => 'Enter event city' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label 'Min price' %>
+            <%= form.text_field :price_low, :class => 'form-control', :placeholder => 'Enter min price' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label 'Max price' %>
+            <%= form.text_field :price_high, :class => 'form-control', :placeholder => 'Enter max price' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :event_date %>
+            <%= form.text_field :event_date, :class => 'form-control', :placeholder => 'Enter event date' %>
+          </div>
+
+          <%= form.submit :class => 'btn btn-primary' %>
+        <% end %>
+
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :artist %>
-    <%= form.text_field :artist %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price_low %>
-    <%= form.text_field :price_low %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price_high %>
-    <%= form.text_field :price_high %>
-  </div>
-
-  <div class="field">
-    <%= form.label :event_date %>
-    <%= form.text_field :event_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</section>
