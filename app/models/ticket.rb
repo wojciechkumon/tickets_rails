@@ -9,10 +9,10 @@ class Ticket < ApplicationRecord
   validate :valid_price
 
   def valid_price
-    if price > event.price_high
+    if price.present? && event.present? && price > event.price_high
       errors.add(:price, "Price higher than allowed in this event (#{event.price_high})")
     end
-    if price < event.price_low
+    if price.present? && event.present? && price < event.price_low
       errors.add(:price, "Price lower than allowed in this event (#{event.price_low})")
     end
   end

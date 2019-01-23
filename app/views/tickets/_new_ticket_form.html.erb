@@ -1,14 +1,18 @@
 <section>
   <div class="container">
-    <h2 class="text-center text-uppercase text-secondary mb-3">New ticket</h2>
+    <h2 class="text-center text-uppercase text-secondary mb-3">
+      <% if edit_form %>
+        Edit ticket
+      <% else %>
+        New ticket
+      <% end %>
+    </h2>
     <div class="row">
       <div class="col-lg-6 offset-lg-3 col-md-12">
         <%= form_with(model: ticket, local: true) do |form| %>
           <% if ticket.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
-
-              <ul>
+            <div class="alert alert-danger" role="alert">
+              <ul class="mb-0">
                 <% ticket.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
                 <% end %>
@@ -57,6 +61,9 @@
           </div>
 
           <%= form.submit :class => 'btn btn-primary' %>
+          <% if edit_form %>
+            <%= link_to 'Show ticket', @ticket, :class => 'btn btn-primary float-right' %>
+          <% end %>
         <% end %>
 
       </div>

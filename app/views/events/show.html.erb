@@ -67,7 +67,8 @@
 <% if current_user.present? %>
   <%= render "tickets/new_ticket_form",
              ticket: Ticket.new(:event_id => @event.id, :email_address => current_user.email),
-             show_event_id: false %>
+             show_event_id: false,
+             edit_form: false %>
 <% end %>
 
 <%= render "tickets/list", tickets: @event.tickets, show_new_ticket_btn: false %>
