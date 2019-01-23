@@ -1,35 +1,48 @@
-<p>
-  <strong>Name:</strong>
-  <%= @ticket.name %>
-</p>
+<section>
+  <div class="container">
+    <h2 class="text-center text-uppercase text-secondary mb-0">Event ticket</h2>
+    <hr class="star-dark mb-5">
 
-<p>
-  <strong>Seat id seq:</strong>
-  <%= @ticket.seat_id_seq %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @ticket.address %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @ticket.price %>
-</p>
-
-<p>
-  <strong>Email address:</strong>
-  <%= @ticket.email_address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @ticket.phone %>
-</p>
-
-<% if @ticket.user == current_user %>
-  <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<% end %>
-
-<%= link_to 'Back', tickets_path %>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <h4>Ticket</h4>
+        <p>
+          <span>Event:</span>
+          <a href="/events/<%= @ticket.event.id %>"><strong><%= @ticket.event.artist %></strong></a>
+        </p>
+        <p>
+          <span>Seat id:</span>
+          <strong><%= @ticket.seat_id_seq %></strong>
+        </p>
+        <p>
+          <span>Price:</span>
+          <strong><%= @ticket.price %></strong>
+        </p>
+      </div>
+      <div class="col-md-6 text-center">
+        <h4>Owner</h4>
+        <p>
+          <span>Name:</span>
+          <strong><%= @ticket.name %></strong>
+        </p>
+        <p>
+          <span>Address:</span>
+          <strong><%= @ticket.address %></strong>
+        </p>
+        <p>
+          <span>Email:</span>
+          <strong><%= @ticket.email_address %></strong>
+        </p>
+        <p>
+          <span>Phone:</span>
+          <strong><%= @ticket.phone %></strong>
+        </p>
+      </div>
+      <div class="col-md-12 text-center mt-4" style="min-width: 10rem;">
+        <% if @ticket.user == current_user %>
+          <%= link_to 'Edit', edit_ticket_path(@ticket), :class => 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
