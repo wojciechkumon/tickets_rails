@@ -11,18 +11,24 @@
           <th scope="col">City</th>
           <th scope="col">Lowest price</th>
           <th scope="col">Highest price</th>
+          <th scope="col">Date</th>
+          <th colspan="1"></th>
         </tr>
         </thead>
         <tbody>
 
         <% events.each do |event| %>
-          <tr onclick="$('#ticket_event_id').val('<%= event.id %>');" style="cursor: pointer;">
-            <td><a href="javascript:void(0);"><%= event.id %></a></td>
-            <td><a href="javascript:void(0);"><%= event.artist %></a></td>
-            <td><a href="javascript:void(0);"><%= event.city %></a></td>
-            <td><a href="javascript:void(0);"><%= event.price_low %></a></td>
-            <td><a href="javascript:void(0);"><%= event.price_high %></a></td>
-            <td><a href="javascript:void(0);"><%= event.event_date %></a></td>
+          <tr>
+            <td><a href="/events/<%= event.id %>"><%= event.id %></a></td>
+            <td><a href="/events/<%= event.id %>"><%= event.artist %></a></td>
+            <td><a href="/events/<%= event.id %>"><%= event.city %></a></td>
+            <td><a href="/events/<%= event.id %>"><%= event.price_low %></a></td>
+            <td><a href="/events/<%= event.id %>"><%= event.price_high %></a></td>
+            <td><a href="/events/<%= event.id %>"><%= event.event_date %></a></td>
+            <td>
+              <button onclick="$('#ticket_event_id').val('<%= event.id %>');"
+                      class="btn btn-primary">Choose</button>
+            </td>
           </tr>
         <% end %>
 
