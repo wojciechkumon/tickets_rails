@@ -56,7 +56,7 @@
     }).addTo(eventMap);
     var latLongArray = <%= @latLong %>;
     if (latLongArray) {
-        eventMap.setView(latLongArray, 7);
+        eventMap.setView(latLongArray, 15);
         L.marker(latLongArray).addTo(eventMap);
     } else {
         var cracowCenter = [50.062201, 19.938157];
