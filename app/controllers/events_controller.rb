@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @latLong = Geocoder.search(@event.city).first
+    @latLong = Geocoder.search(@event.location).first
     if @latLong
       @latLong = @latLong.coordinates
     end
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    event_params = params.require(:event).permit(:artist, :description, :city, :price_low, :price_high, :event_date)
+    event_params = params.require(:event).permit(:artist, :description, :location, :price_low, :price_high, :event_date)
     @event = Event.new(event_params)
     if @event.save
       redirect_to "/events/#{@event.id}", notice: 'Event was successfully created.'

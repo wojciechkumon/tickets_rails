@@ -9,7 +9,7 @@
         <thead>
         <tr>
           <th scope="col">Artist</th>
-          <th scope="col">City</th>
+          <th scope="col">Location</th>
           <th scope="col">Date</th>
         </tr>
         </thead>
@@ -17,7 +17,7 @@
         <% @events.each {|event| %>
           <tr>
             <td><a href="/events/<%= event.id %>"><%= event.artist %></a></td>
-            <td><a href="/events/<%= event.id %>"><%= event.city %></a></td>
+            <td><a href="/events/<%= event.id %>"><%= event.location %></a></td>
             <td><a href="/events/<%= event.id %>"><%= event.event_date %></a></td>
           </tr>
         <% } %>
